@@ -24,7 +24,7 @@ int main() {
 	int connection_status = connect(network_socket, (struct sockaddr *) &server_address, sizeof(server_address));
 	// Check for error with the connection
 	if (connection_status == -1) {
-		printf("There was an error making a connection with teh remote socket\n\n");
+		printf("There was an error making a connection with the remote socket\n\n");
 	}
 	
 	// Recive data from the server
