@@ -18,7 +18,7 @@ int main() {
 	// htons() converts an integer into a port value that can be made sense
 	// of by the included libraries
 	server_address.sin_port = htons(9002);
-	server_address.sin_addr.s_addr = INADDR_ANY;
+	server_address.sin_addr.s_addr = inet_addr("45.63.57.33");
 
 	// This returns an integer that cna be used to debug connection errors
 	int connection_status = connect(network_socket, (struct sockaddr *) &server_address, sizeof(server_address));
