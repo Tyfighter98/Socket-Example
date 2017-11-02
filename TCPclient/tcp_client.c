@@ -7,6 +7,10 @@
 // Contains a structre to hold the remote port and ip we want
 #include <netinet/in.h>
 
+char client_message;
+void getUserInput();
+
+
 int main() {
 	// Cerate a socket
 	int network_socket;
@@ -26,7 +30,10 @@ int main() {
 	if (connection_status == -1) {
 		printf("There was an error making a connection with the remote socket\n\n");
 	}
-	
+
+	getUserInput();
+	send(network_socket, &client_message, sizeof(client_message), 0);
+
 	// Recive data from the server
 	char server_response[256];
 	recv(network_socket, &server_response, sizeof(server_response), 0);
@@ -38,4 +45,9 @@ int main() {
 	close(network_socket);
 
 	return 0;
+}
+
+void getUserInput() {
+	printf("What do you want to send?: ");
+	client_message = getchar();
 }
